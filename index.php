@@ -8,8 +8,7 @@ require('db.php');
 
 // Ma requete SELECT
 
-$req = 'SELECT * FROM post';
-$req = $bdd->prepare($req);
+$req = $bdd->prepare('SELECT * FROM post');
 $req->execute();
 $result = $req->fetchAll(PDO::FETCH_ASSOC);
 

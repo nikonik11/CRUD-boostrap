@@ -12,8 +12,7 @@ if($_POST){
         $title = htmlspecialchars($_POST['title']);
         $content = htmlspecialchars($_POST['content']);
 
-        $req = "INSERT INTO post (title, content) VALUES (:title, :content)";
-        $req = $bdd->prepare($req);
+        $req = $bdd->prepare("INSERT INTO post (title, content) VALUES (:title, :content)");
         $req->bindValue(':title', $title, PDO::PARAM_STR);
         $req->bindValue(':content', $content, PDO::PARAM_STR);
         $req->execute();

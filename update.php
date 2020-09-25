@@ -14,8 +14,7 @@ if($_POST){
         $title   = htmlspecialchars($_POST['title']);
         $content = htmlspecialchars($_POST['content']);
 
-        $req = "UPDATE post SET idPost = :idPost, title = :title, content = :content WHERE idPost = :idPost";
-        $req = $bdd->prepare($req);
+        $req = $bdd->prepare("UPDATE post SET idPost = :idPost, title = :title, content = :content WHERE idPost = :idPost");
         $req->bindValue(':idPost', $idPost, PDO::PARAM_INT);
         $req->bindValue(':title', $title, PDO::PARAM_STR);
         $req->bindValue(':content', $content, PDO::PARAM_STR);
@@ -34,8 +33,7 @@ if(isset($_GET['idPost']) && !empty($_GET['idPost'])){
 
     $idPost = htmlspecialchars($_GET['idPost']);
 
-    $req = 'SELECT * FROM post WHERE idPost = :idPost';
-    $req = $bdd->prepare($req);
+    $req = $bdd->prepare('SELECT * FROM post WHERE idPost = :idPost');
     $req->bindValue(':idPost', $idPost, PDO::PARAM_INT);
     $req->execute();
     $result = $req->fetch();
